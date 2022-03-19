@@ -1,4 +1,53 @@
-h1 {
-  color: brown;
-  text-align: center;
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --font-utama: "Palette Mosaic", cursive;
+  --font-sekunder: "Lobster", cursive;
+  --font-aksen: "Noto Sans", sans-serif;
+  --warna-utama: #61a4bc;
+  --warna-sekunder: #f7e2e2;
+  --warna-aksen: #5b7db1;
+  --warna-gelap: #1a132f;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--warna-sekunder);
+}
+
+header {
+  background-color: #61a4bc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 15px;
+}
+
+nav > ul {
+  display: flex;
+  width: 300px;
+  list-style-type: none;
+  justify-content: space-around;
+}
+
+nav > ul > li {
+  font-family: var(--font-aksen);
+  color: var(--warna-gelap);
+}
+
+.logo {
+  font-family: var(--font-utama);
+  color: var(--warna-gelap);
+}
+
+main {
+  padding: 3%;
+}
+
+h2 {
+  font-family: var(--font-sekunder);
+  color: var(--warna-gelap);
 }
