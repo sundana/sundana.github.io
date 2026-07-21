@@ -1,0 +1,5 @@
+# Example blog
+
+Empty blog
+
+```
