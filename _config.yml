@@ -1,0 +1,26 @@
+title: Firmansyah Sundana
+email: firmansyahsundana10@gmail.com
+description: Sundana Personal Website
+url: ""
+twitter_username: sundana_dev
+github_username: firmansyahsundana
+
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - package.json
+  - package-lock.json
+  - astro.config.mjs
+  - tailwind.config.js
+  - tsconfig.json
+  - src/
+  - dist/
+  - .astro/
+  - README.md
