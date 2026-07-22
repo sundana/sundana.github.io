@@ -1,0 +1,24 @@
+---
+layout: default
+title: Research
+---
+
+<div class="container container-narrow">
+  <div class="blog-header">
+    <h1>Research</h1>
+  </div>
+
+  <div class="card-list">
+    {% for research in site.research %}
+      <a href="{{ research.url }}" class="card">
+        <div class="card-row">
+          <span class="card-title">{{ research.title }}</span>
+          <span class="card-tag {% if research.status == 'ongoing' %}tag-ongoing{% else %}tag-published{% endif %}">
+            {% if research.status == 'ongoing' %}On Going{% else %}Published{% endif %}
+          </span>
+        </div>
+        <span class="card-desc">{{ research.desc }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</div>

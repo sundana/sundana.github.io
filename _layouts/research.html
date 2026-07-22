@@ -1,0 +1,19 @@
+---
+layout: default
+---
+<div class="container container-narrow">
+  <a href="/research" class="back-link">&larr; All Research</a>
+  <article>
+    <header>
+      <h1>{{ page.title }}</h1>
+      <p>
+        <span class="card-tag {% if page.status == 'ongoing' %}tag-ongoing{% else %}tag-published{% endif %}">
+          {% if page.status == 'ongoing' %}On Going{% else %}Published{% endif %}
+        </span>
+        {% if page.year %} &middot; <span class="author">{{ page.year }}</span>{% endif %}
+        {% if page.venue %} &middot; <span class="author">{{ page.venue }}</span>{% endif %}
+      </p>
+    </header>
+    {{ content }}
+  </article>
+</div>

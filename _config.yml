@@ -11,6 +11,26 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name.html
+  research:
+    output: true
+    permalink: /research/:name.html
+
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: project
+  - scope:
+      path: ""
+      type: "research"
+    values:
+      layout: research
+
 exclude:
   - Gemfile
   - Gemfile.lock

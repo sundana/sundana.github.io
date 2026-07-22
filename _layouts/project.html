@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<div class="container container-narrow">
+  <a href="/projects" class="back-link">&larr; All Projects</a>
+  <article>
+    <header>
+      <h1>{{ page.title }}</h1>
+      {% if page.subtitle %}
+        <p><span class="author">{{ page.subtitle }}</span></p>
+      {% endif %}
+    </header>
+    {% if page.external %}
+      <p>External project. <a href="{{ page.external_url }}" target="_blank">Visit site &rarr;</a></p>
+    {% endif %}
+    {{ content }}
+  </article>
+</div>

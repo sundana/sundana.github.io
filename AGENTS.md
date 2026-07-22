@@ -19,9 +19,10 @@ Always use `bundle exec` — do not invoke `jekyll` directly.
 
 ## Architecture
 
-- **Layouts**: `_layouts/default.html` (base wrapper), `_layouts/post.html` (blog posts with article semantics)
+- **Layouts**: `_layouts/default.html` (base wrapper), `_layouts/post.html` (blog posts with article semantics), `_layouts/project.html` (project pages)
 - **Pages**: root `.html` files (`index.html`, `blog.html`, `404.html`) and `projects/*.html`
 - **Posts**: `_posts/YYYY-MM-DD-slug.md` with front matter `layout: post`
+- **Projects**: `_projects/*.html` or `.md` — Jekyll collection, same pattern as posts. Add a file with front matter (`title`, `desc`, optional `external`/`external_url`/`subtitle`), it auto-appears on homepage and `/projects/`.
 - **Config**: `_config.yml` — `url` must be `"https://sundana.github.io"` for correct SEO, feeds, and canonicals
 
 ### Directory map
@@ -30,7 +31,10 @@ Always use `bundle exec` — do not invoke `jekyll` directly.
 |---|---|
 | `_layouts/` | Liquid layouts |
 | `_posts/` | Blog posts (date-prefixed `.md`) |
-| `projects/` | Dedicated project pages (static `.html`) |
+| `_projects/` | Project pages (Jekyll collection, `.html` or `.md`) |
+| `_research/` | Research pages (Jekyll collection, `.html` or `.md`) |
+| `projects/` | Generated project index page (`projects/index.html`) |
+| `research/` | Generated research index page (`research/index.html`) |
 | `styles/` | Single `style.css` with all styles |
 | `img/` | Images |
 | `_site/` | Build output — **gitignored, never edit directly** |

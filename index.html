@@ -18,59 +18,57 @@ layout: default
   <div class="section">
     <h2 class="section-title">Projects</h2>
     <div class="card-list">
-      <a href="/projects/rl-pipeline" class="card">
-        <span class="card-title">Distributed RL Pipeline</span>
-        <span class="card-desc">Multi-agent reinforcement learning at scale. 480K steps/sec, MAPPO/QMIX, Kubernetes-native.</span>
-      </a>
-      <a href="/projects/cv-thesis" class="card">
-        <span class="card-title">Real-Time Object Detection</span>
-        <span class="card-desc">Lightweight detection for autonomous systems. Novel backbone, INT8 on Jetson Orin at 7.8ms.</span>
-      </a>
-      <a href="https://lsfdiscourse.vercel.app" target="_blank" class="card">
-        <span class="card-title">Discourse</span>
-        <span class="card-desc">A digital magazine powered by LSF Discourse. Built with NextJS and TypeScript.</span>
-      </a>
+      {% for project in site.projects %}
+        <a href="{% if project.external %}{{ project.external_url }}{% else %}{{ project.url }}{% endif %}"
+           {% if project.external %}target="_blank"{% endif %} class="card">
+          <span class="card-title">{{ project.title }}</span>
+          <span class="card-desc">{{ project.desc }}</span>
+        </a>
+      {% endfor %}
     </div>
   </div>
 
   <div class="section">
-    <h2 class="section-title">Writing</h2>
+    <h2 class="section-title">Research</h2>
     <div class="card-list">
-      <a href="https://lsfdiscourse.org/artikel/pelajaran-singkat-tentang-argumen" target="_blank" class="card">
-        <span class="card-title">Pelajaran Singkat tentang Argumen</span>
-        <span class="card-desc">An introduction to the structure of arguments.</span>
-      </a>
+      {% for research in site.research %}
+        <a href="{{ research.url }}" class="card">
+          <div class="card-row">
+            <span class="card-title">{{ research.title }}</span>
+            <span class="card-tag {% if research.status == 'ongoing' %}tag-ongoing{% else %}tag-published{% endif %}">
+              {% if research.status == 'ongoing' %}On Going{% else %}Published{% endif %}
+            </span>
+          </div>
+          <span class="card-desc">{{ research.desc }}</span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Publications &amp; Talks</h2>
+    <div class="card-list">
       <a href="https://lsfdiscourse.org/artikel/struktur-logis-dunia-kita" target="_blank" class="card">
         <span class="card-title">Struktur Logis Dunia (Kita)</span>
         <span class="card-desc">Exploring the logical structure of our world.</span>
-      </a>
-      <a href="https://lsfdiscourse.org/artikel/ada-apa-dengan-cinta" target="_blank" class="card">
-        <span class="card-title">Ada Apa dengan Cinta?</span>
-        <span class="card-desc">A philosophical take on love.</span>
-      </a>
-      <a href="https://lsfdiscourse.org/artikel/sherlock-holmes-dan-masalah-etika" target="_blank" class="card">
-        <span class="card-title">Sherlock Holmes dan Masalah Etika</span>
-        <span class="card-desc">Ethical problems through the lens of Sherlock Holmes.</span>
-      </a>
-      <a href="https://lsfdiscourse.org/artikel/genderuwo-leak-dan-pengetahuan-kita" target="_blank" class="card">
-        <span class="card-title">Genderuwo, Leak, dan Pengetahuan Kita</span>
-        <span class="card-desc">Folklore and the nature of knowledge.</span>
       </a>
       <a href="https://lsfdiscourse.org/artikel/agora-konflik-umat-penghancuran-buku-hingga-kematian-filsafat"
         target="_blank" class="card">
         <span class="card-title">Agora: Konflik Umat, Penghancuran Buku, hingga Kematian Filsafat</span>
         <span class="card-desc">On religious conflict, book burning, and the death of philosophy.</span>
       </a>
-    </div>
-  </div>
-
-  <div class="section">
-    <h2 class="section-title">Teaching</h2>
-    <div class="card-list">
+      <a href="https://www.youtube.com/watch?v=SlukaKGRb8U" target="_blank" class="card">
+        <span class="card-title">Polemik Filsafat &mdash; Iman, Pengetahuan, &amp; Epistemologi</span>
+        <span class="card-desc">A discussion on faith, knowledge, and epistemology.</span>
+      </a>
       <a href="https://www.youtube.com/watch?v=0qrIapY3m3k" target="_blank" class="card">
         <span class="card-title">Pengantar Ontologi dan Epistemologi</span>
-        <span class="card-desc">An introduction to ontology and epistemology.</span>
+        <span class="card-desc">A lecture introducing ontology and epistemology.</span>
       </a>
     </div>
+    <p style="margin-top: 1rem; font-size: 0.8125rem;">
+      <a href="https://lsfdiscourse.org/author/firmansyahsundana/" target="_blank">More writing on LSF Discourse
+        &rarr;</a>
+    </p>
   </div>
 </div>
