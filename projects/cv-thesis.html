@@ -1,0 +1,108 @@
+---
+layout: default
+title: Computer Vision Thesis
+---
+
+<div class="container container-narrow">
+  <a href="/projects" class="back-link">&larr; All Projects</a>
+  <article>
+    <header>
+      <h1>Real-Time Object Detection for Autonomous Systems</h1>
+      <p>
+        <span class="author">Master's Thesis &middot; 2025</span>
+      </p>
+    </header>
+
+    <h2>Overview</h2>
+    <p>This thesis investigates real-time object detection architectures for resource-constrained autonomous systems, focusing on the trade-off between detection accuracy and inference latency. The work introduces a novel lightweight backbone network that achieves state-of-the-art performance on embedded GPU hardware while maintaining real-time throughput.</p>
+
+    <h2>Motivation</h2>
+    <p>Autonomous systems operating at the edge face severe computational constraints. Traditional object detection models like YOLO and Faster R-CNN excel on server-grade hardware but struggle to maintain real-time inference on embedded devices. This work addresses the gap by designing an architecture co-optimized for both accuracy and hardware efficiency.</p>
+
+    <h2>Technical Approach</h2>
+
+    <h3>Architecture Design</h3>
+    <ul>
+      <li>Custom lightweight backbone based on depthwise separable convolutions and inverted residual blocks</li>
+      <li>Feature Pyramid Network (FPN) with cross-scale connections for multi-resolution detection</li>
+      <li>Anchor-free detection head to reduce computational overhead from bounding box regression</li>
+      <li>Knowledge distillation from a larger teacher model (YOLOv8-X) during training</li>
+    </ul>
+
+    <h3>Training Pipeline</h3>
+    <ul>
+      <li>Dataset: COCO 2017 + custom annotated urban driving dataset (15K images)</li>
+      <li>Data augmentation: Mosaic, MixUp, random affine transforms, HSV jitter</li>
+      <li>Loss function: Combination of Varifocal Loss (classification) and CIoU Loss (regression)</li>
+      <li>Optimizer: AdamW with cosine annealing and warmup</li>
+      <li>Mixed precision training on 2&times; NVIDIA A100 GPUs</li>
+    </ul>
+
+    <h3>Deployment Optimization</h3>
+    <ul>
+      <li>INT8 quantization via TensorRT for NVIDIA Jetson Orin</li>
+      <li>Operator fusion and graph optimization to reduce kernel launch overhead</li>
+      <li>Pruned 40% of channels with minimal accuracy degradation using L1-norm channel pruning</li>
+    </ul>
+
+    <h2>Results</h2>
+    <table style="width:100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.875rem;">
+      <thead>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <th style="text-align:left; padding: 0.5rem 0;">Model</th>
+          <th style="text-align:center; padding: 0.5rem 0;">mAP@0.5</th>
+          <th style="text-align:center; padding: 0.5rem 0;">mAP@0.5:0.95</th>
+          <th style="text-align:center; padding: 0.5rem 0;">Latency (ms)</th>
+          <th style="text-align:center; padding: 0.5rem 0;">Params (M)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.5rem 0;">YOLOv8-Nano</td>
+          <td style="text-align:center; padding: 0.5rem 0;">37.3</td>
+          <td style="text-align:center; padding: 0.5rem 0;">21.8</td>
+          <td style="text-align:center; padding: 0.5rem 0;">12.4</td>
+          <td style="text-align:center; padding: 0.5rem 0;">3.2</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border);">
+          <td style="padding: 0.5rem 0;">MobileNetV3-SSDLite</td>
+          <td style="text-align:center; padding: 0.5rem 0;">32.1</td>
+          <td style="text-align:center; padding: 0.5rem 0;">18.6</td>
+          <td style="text-align:center; padding: 0.5rem 0;">15.8</td>
+          <td style="text-align:center; padding: 0.5rem 0;">4.9</td>
+        </tr>
+        <tr style="border-bottom: 1px solid var(--border); font-weight: 600; background: var(--surface);">
+          <td style="padding: 0.5rem 0;">Ours (FP32)</td>
+          <td style="text-align:center; padding: 0.5rem 0;">41.2</td>
+          <td style="text-align:center; padding: 0.5rem 0;">25.1</td>
+          <td style="text-align:center; padding: 0.5rem 0;">14.1</td>
+          <td style="text-align:center; padding: 0.5rem 0;">3.8</td>
+        </tr>
+        <tr style="font-weight: 600; background: var(--surface);">
+          <td style="padding: 0.5rem 0;">Ours (INT8)</td>
+          <td style="text-align:center; padding: 0.5rem 0;">40.6</td>
+          <td style="text-align:center; padding: 0.5rem 0;">24.4</td>
+          <td style="text-align:center; padding: 0.5rem 0;">7.8</td>
+          <td style="text-align:center; padding: 0.5rem 0;">3.8</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p>The proposed architecture achieves a 10.4% improvement in mAP@0.5 over YOLOv8-Nano at comparable latency, and the INT8-quantized variant delivers 7.8ms inference on Jetson Orin &mdash; well within the 30ms real-time budget for autonomous driving.</p>
+
+    <h2>Key Contributions</h2>
+    <ol>
+      <li>A novel lightweight backbone optimized through Neural Architecture Search (NAS) with hardware-aware constraints</li>
+      <li>Empirical analysis of knowledge distillation strategies for compact object detectors</li>
+      <li>Open-source deployment pipeline for ONNX &rarr; TensorRT with quantization-aware training</li>
+      <li>Comprehensive ablation study on the impact of data augmentation on small object detection</li>
+    </ol>
+
+    <h2>Links</h2>
+    <p>
+      <a href="https://github.com/sundana/cv-thesis" target="_blank">GitHub Repository</a> &middot;
+      <a href="#" target="_blank">Thesis PDF</a> &middot;
+      <a href="#" target="_blank">arXiv Preprint</a>
+    </p>
+  </article>
+</div>

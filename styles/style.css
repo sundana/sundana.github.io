@@ -333,6 +333,15 @@ article li {
   margin-bottom: 0.5rem;
 }
 
+article table {
+  color: var(--text-secondary);
+}
+
+article table th {
+  color: var(--text);
+  font-weight: 600;
+}
+
 article blockquote {
   border-left: 2px solid var(--border);
   padding-left: 1rem;
