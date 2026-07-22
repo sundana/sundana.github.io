@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="viewport" content="width=device-width" />
-  <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
+  <title>{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }}</title>
   <meta name="description" content="{{ site.description }}" />
   <link rel="stylesheet" href="/styles/style.css" />
   {% seo %}
@@ -12,19 +12,21 @@
 </head>
 <body>
   <header>
-    <div class="logo">
-      <a href="/">{{ site.title }}</a>
+    <div>
+      <div class="logo">
+        <a href="/">{{ site.title }}</a>
+      </div>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/blog">Blog</a>
+      </nav>
     </div>
-    <nav>
-      <a href="/">Home</a>
-      <a href="/blog">Blog</a>
-    </nav>
   </header>
   <main>
     {{ content }}
   </main>
   <footer>
-    <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}.</p>
+    <p>&copy; {{ site.time | date: '%Y' }} {{ site.title }}</p>
     <p>
       <a href="https://github.com/{{ site.github_username }}">GitHub</a>
       &middot;
