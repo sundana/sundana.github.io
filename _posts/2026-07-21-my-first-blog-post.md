@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title: 'My First Blog Post'
 date: 2026-07-21
 description: 'This is the first post of my new blog'
