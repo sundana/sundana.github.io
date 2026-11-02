@@ -1,6 +1,6 @@
 ---
 title: "When the Background Becomes the Diagnostic: Shortcut Learning in Mobile Plant Diseases Classifiers"
-status: in-press
+status: ongoing
 desc: Diagnosing why imagined rollouts destabilize lightweight MBRL. Controlled encoder-matched experiments show multi-step latent drift corrupts returns; horizon truncation to h=1 restores stability.
 ---
 
